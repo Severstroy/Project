@@ -1,4 +1,4 @@
-
+#1,2,3 задания
 car_brands = {}
 
 
@@ -13,7 +13,7 @@ for row in sheet.iter_rows(values_only=True):
     for brand in row:
   
         if brand:
-ъ
+
             if brand in car_brands:
                 car_brands[brand] += 1
             
@@ -29,3 +29,17 @@ most_popular_brands = sorted(car_brands.items(), key=lambda x: x[1], reverse=Tru
 
 for brand, count in most_popular_brands:
     print(f"{brand}: {count} упоминаний")
+#4 задание
+import pandas as pd
+
+# Загружаем данные из файла Excel
+df = pd.read_excel('cars.xlsx')
+
+# Группируем данные по году и типу автомобиля и суммируем количество
+cars_by_year = df.groupby(['Year', 'Type']).sum()
+
+# Получаем количество электромобилей для определенного года
+year = 2022  # Задайте нужный год
+electric_cars_count = cars_by_year.loc[(year, 'Electric'), 'Count']
+
+print(f"Количество электромобилей, выпущенных в {year} году: {electric_cars_count}")
