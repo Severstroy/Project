@@ -50,14 +50,14 @@ for year, row in grouped_data.iterrows():
 #4 задание
 import pandas as pd
 
-# Загружаем данные из файла Excel
+# Функция загрузки файла из экселя
 df = pd.read_excel('cars.xlsx')
 
 # Группируем данные по году и типу автомобиля и суммируем количество
 cars_by_year = df.groupby(['Year', 'Type']).sum()
 
 # Получаем количество электромобилей для определенного года
-year = 2022  # Задайте нужный год
+year = 2022  # Здесь можно задать нужный год
 electric_cars_count = cars_by_year.loc[(year, 'Electric'), 'Count']
 
 print(f"Количество электромобилей, выпущенных в {year} году: {electric_cars_count}")
